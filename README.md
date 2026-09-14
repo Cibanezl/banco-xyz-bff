@@ -1,18 +1,18 @@
 # Banco XYZ - Arquitectura Backend for Frontend (BFF)
 
-Este proyecto corresponde a la evaluación sumativa de la Semana 5 para la asignatura **Desarrollo Backend III (PBY2203)**. Implementa el patrón arquitectónico **Backend for Frontend (BFF)** sobre **Java Spring Boot**, optimizando y personalizando las respuestas para tres canales de atención independientes (Web, Mobile y Cajeros Automáticos)[cite: 2, 3].
+Este proyecto corresponde a la evaluación sumativa de la Semana 5 para la asignatura **Desarrollo Backend III (PBY2203)**. Implementa el patrón arquitectónico **Backend for Frontend (BFF)** sobre **Java Spring Boot**, optimizando y personalizando las respuestas para tres canales de atención independientes (Web, Mobile y Cajeros Automáticos).
 
 ---
 
 ## Objetivo del Proyecto
 
-Proporcionar APIs personalizadas y desacopladas para cada canal cliente del Banco XYZ, garantizando optimización de payloads (DTOs a la medida) y restringiendo el acceso mediante seguridad por canal (Spring Security) y propuesta de cifrado HTTPS[cite: 1, 2, 3].
+Proporcionar APIs personalizadas y desacopladas para cada canal cliente del Banco XYZ, garantizando optimización de payloads (DTOs a la medida) y restringiendo el acceso mediante seguridad por canal (Spring Security) y propuesta de cifrado HTTPS.
 
 ---
 
 ## Estructura del Código
 
-El proyecto sigue una organización modular limpia dentro del paquete `com.duoc.banco`[cite: 2, 3]:
+El proyecto sigue una organización modular limpia dentro del paquete `com.duoc.banco`:
 
 src/main/java/com/duoc/banco/
 ├── bff/                  # Controladores BFF por canal (Web, Mobile, ATM)
@@ -26,7 +26,7 @@ src/main/java/com/duoc/banco/
 
 ## Seguridad y Autenticación por Canal
 
-Se implementó **Spring Security con HTTP Basic Auth**[cite: 2, 3]. Cada endpoint está protegido y requiere credenciales vinculadas a un rol específico (`ROLE_WEB`, `ROLE_MOBILE`, `ROLE_ATM`), impidiendo el consumo cruzado no autorizado entre plataformas[cite: 1, 2, 3].
+Se implementó **Spring Security con HTTP Basic Auth**. Cada endpoint está protegido y requiere credenciales vinculadas a un rol específico (`ROLE_WEB`, `ROLE_MOBILE`, `ROLE_ATM`), impidiendo el consumo cruzado no autorizado entre plataformas.
 
 ### Credenciales de Prueba
 
@@ -42,9 +42,9 @@ Se implementó **Spring Security con HTTP Basic Auth**[cite: 2, 3]. Cada endpoin
 
 | Canal | Método | Ruta del Endpoint | Descripción del Payload |
 | :--- | :--- | :--- | :--- |
-| **Web** | `GET` | `/api/v1/bff/web/dashboard/{numeroCuenta}` | Respuesta extendida con saldo e historial completo[cite: 2, 3]. |
-| **Mobile** | `GET` | `/api/v1/bff/mobile/summary/{numeroCuenta}` | Payload liviano con saldo disponible y últimas 5 transacciones[cite: 2, 3]. |
-| **ATM** | `GET` | `/api/v1/bff/atm/saldo/{numeroCuenta}` | Respuesta operacional mínima orientada a consultas rápidas[cite: 2, 3]. |
+| **Web** | `GET` | `/api/v1/bff/web/dashboard/{numeroCuenta}` | Respuesta extendida con saldo e historial completo. |
+| **Mobile** | `GET` | `/api/v1/bff/mobile/summary/{numeroCuenta}` | Payload liviano con saldo disponible y últimas 5 transacciones. |
+| **ATM** | `GET` | `/api/v1/bff/atm/saldo/{numeroCuenta}` | Respuesta operacional mínima orientada a consultas rápidas. |
 
 ---
 
